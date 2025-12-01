@@ -1,4 +1,36 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define MAX_FILA 5     
+#define MAX_PILHA 3
+
+typedef struct {
+    char tipo;
+    int id;
+}Peca;
+
+void mostrarFila(Peca fila[], int ini, int qtd) {
+    printf("Fila: ");
+    for (int i = 0; i < qtd; i++) {
+        int pos = (ini + i) % MAX_FILA;
+        printf("[%c %d] ", fila[pos].tipo, fila[pos].id);
+    }
+    if (qtd == 0) printf("(vazia)");
+    printf("\n");
+}
+
+void mostrarPilha(Peca pilha[], int topo) {
+    printf("Pilha (Topo -> Base): ");
+    if (topo == -1) {
+        printf("(vazia)\n");
+        return;
+    }
+    for (int i = topo; i >= 0; i--) {
+        printf("[%c %d] ", pilha[i].tipo, pilha[i].id);
+    }
+    printf("\n");
+}
 
 // Desafio Tetris Stack
 // Tema 3 - Integração de Fila e Pilha
